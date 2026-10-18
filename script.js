@@ -17,7 +17,7 @@ const TOP_PAGES_COUNT = 8;
 const TOP_LANGS_COUNT = 8;
 
 // Backend (the FastAPI server from Phase 3)
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://wikipedia-live-pulse.onrender.com";
 const HISTORY_HOURS = 24;
 const HISTORY_REFRESH_SECONDS = 60;
 
