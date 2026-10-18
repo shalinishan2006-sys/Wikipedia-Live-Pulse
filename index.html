@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2a1b12">
+  <title>Wikipedia Live Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Live from the world's encyclopedia</p>
+    <h1>Wikipedia Live Pulse</h1>
+    <p class="lead">Every edit happening on Wikipedia right now, straight from the live stream.</p>
+    <p class="status">
+      <span id="statusDot" class="dot"></span>
+      <span id="statusText">Connecting...</span>
+    </p>
+  </header>
+
+  <main>
+    <section class="card chart-card">
+      <h2>Edits per minute <span class="hint">last 10 minutes</span></h2>
+      <canvas id="chart"></canvas>
+    </section>
+
+    <section class="card history-card">
+      <h2>Last 24 hours <span class="hint">saved by the server</span></h2>
+      <div class="history-stats">
+        <div class="spike-stat">
+          <span class="spike-label">Average / min</span>
+          <strong id="histAvg">...</strong>
+        </div>
+        <div class="spike-stat">
+          <span class="spike-label">Peak / min</span>
+          <strong id="histPeak">...</strong>
+        </div>
+        <div class="spike-stat">
+          <span class="spike-label">Bot share</span>
+          <strong id="histBots">...</strong>
+        </div>
+        <div class="spike-stat">
+          <span class="spike-label">Total edits</span>
+          <strong id="histTotal">...</strong>
+        </div>
+      </div>
+      <canvas id="historyChart"></canvas>
+      <p id="historyNote" class="note">Loading history from the server...</p>
+    </section>
+
+    <!-- Column 1 -->
+    <div class="col">
+      <section class="card stat-card">
+        <h2>Edits since you opened this page</h2>
+        <div id="count" class="big-number">0</div>
+        <p class="note">Counting edits and new pages on Wikipedia, in every language.</p>
+      </section>
+
+      <section class="card bots-card">
+        <h2>Bots vs humans <span class="hint">last 10 minutes</span></h2>
+        <div class="split">
+          <div id="humanBar" class="split-human"></div>
+          <div id="botBar" class="split-bot"></div>
+        </div>
+        <div class="split-legend">
+          <div class="legend-item">
+            <span class="swatch swatch-human"></span>
+            <span>Humans</span>
+            <strong id="humanText">...</strong>
+          </div>
+          <div class="legend-item">
+            <span class="swatch swatch-bot"></span>
+            <span>Bots</span>
+            <strong id="botText">...</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="spikeCard" class="card spike-card">
+        <h2>Spike alert <span class="hint">z-score</span></h2>
+        <div id="spikeBadge" class="spike-badge">Learning...</div>
+        <p id="spikeMessage" class="note">Learning what a normal edit speed looks like.</p>
+        <div class="spike-stats">
+          <div class="spike-stat">
+            <span class="spike-label">Now</span>
+            <strong id="spikeNow">...</strong>
+          </div>
+          <div class="spike-stat">
+            <span class="spike-label">Average</span>
+            <strong id="spikeAvg">...</strong>
+          </div>
+          <div class="spike-stat">
+            <span class="spike-label">Z-score</span>
+            <strong id="spikeZ">...</strong>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="col">
+      <section class="card pages-card">
+        <h2>Top pages <span class="hint">last 10 minutes</span></h2>
+        <ol id="topPages"></ol>
+      </section>
+
+      <section class="card langs-card">
+        <h2>Busiest languages <span class="hint">last 10 minutes</span></h2>
+        <ol id="topLangs"></ol>
+      </section>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="col col-feed">
+      <section class="card feed-card">
+        <h2>Live feed <span class="hint">newest first</span></h2>
+        <ul id="feed"></ul>
+      </section>
+    </div>
+  </main>
+
+    <script src="spike.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

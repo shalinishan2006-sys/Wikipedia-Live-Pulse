@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database made by the server
+backend/pulse.db
+backend/pulse.db-journal
+
+# Mac
+.DS_Store
